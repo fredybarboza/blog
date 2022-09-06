@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('home');
 })->name('/');
 
-Route::view('/borrar', 'borrar');
+
