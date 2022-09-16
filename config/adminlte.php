@@ -318,7 +318,7 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'ADMINISTRADOR'],
+        ['header' => 'ADMINISTRATOR'],
         [
             'text' => 'Categories',
             'route'  => 'admin.categories.index',
@@ -329,60 +329,23 @@ return [
             'route'  => 'admin.tags.index',
             'icon' => 'fas fa-fw fa-tags',
         ],
+        ['header' => 'BLOG OPTIONS'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'       => 'Post List',
+            'icon' => 'fas fa-fw fa-list',
+            'route'        => 'admin.posts.index',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'       => 'Writing',
+            'icon' => 'fas fa-fw fa-pen-nib',
+            'route'        => 'writing',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'       => 'New Post',
+            'icon' => 'fas fa-fw fa-plus',
+            'route'        => 'admin.posts.create',
         ],
+        
     ],
 
     /*

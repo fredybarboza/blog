@@ -11,6 +11,10 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug'];
 
+    public function getRouteKeyName(){
+        return 'slug';
+    }
+
     //REALACION UNO A MUCHOS
     public function posts(){
         return $this->hasMany(Post::class);

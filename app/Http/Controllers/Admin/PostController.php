@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TagRequest;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
-        return view('Admin.tags.index', compact('tags'));
+        $posts = Post::where('user_id', Auth()->user()->id)->get();
+        
+        return view('Admin.posts.index', compact('posts'));
     }
 
     /**
@@ -28,7 +29,11 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('Admin.tags.create');
+        $categories = Category::all();
+
+        $tags = Tag::all();
+
+        return view('Admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -37,13 +42,10 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagRequest $request)
+    public function store(Request $request)
     {
-        Tag::create($request->all());
-
-        return redirect()->route('admin.tags.index');
+        //
     }
-    
 
     /**
      * Display the specified resource.
@@ -62,9 +64,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
-        return view('Admin.tags.edit', compact('tag'));
+        //
     }
 
     /**
@@ -74,11 +76,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TagRequest $request, Tag $tag)
+    public function update(Request $request, $id)
     {
-        $tag->update($request->all());
-
-        return redirect()->route('admin.tags.index');
+        //
     }
 
     /**
@@ -87,9 +87,8 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        $tag->delete();
-        return redirect()->route('admin.tags.index');
+        //
     }
 }
