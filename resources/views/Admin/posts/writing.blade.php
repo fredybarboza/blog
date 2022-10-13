@@ -23,10 +23,10 @@
                 </thead>
 
                 <tbody>
-                   
+                   @foreach($posts as $post)
                     <tr>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $post->id }}</td>
+                        <td>{{ $post->name }}</td>
                         <td style="width: 1rem;">
                             <a class="btn btn-primary btn-sm" href="">Edit</a>
                         </td>
@@ -38,7 +38,7 @@
                             </form>
                         </td>
                     </tr>
-                 
+                 @endforeach
                 </tbody>
             </table>
         </div>

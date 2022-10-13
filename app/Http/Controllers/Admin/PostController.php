@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -17,8 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('user_id', Auth()->user()->id)->get();
-        
+        $posts = Post::where('user_id', Auth()->user()->id)->where('status', 2)->get();
+
         return view('Admin.posts.index', compact('posts'));
     }
 
@@ -42,9 +44,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+   
+        $user = User::FindOrFail($request->user_id);
+        
+        $this->authorize('post', $user);
+        
+        $post = Post::create($request->all());
+
+        if($request->tags){
+            $post->tags()->attach($request->tags);
+        }
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
