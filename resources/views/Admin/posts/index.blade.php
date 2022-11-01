@@ -18,6 +18,7 @@
                     <tr>
                         <th>ID</th>
                         <th>NAME</th>
+                        <th>STATUS</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->name }}</td>
+                        <td>@if($post->status == 1) Borrador @else Publicado @endif</td>
                         <td style="width: 1rem;">
                             <a class="btn btn-primary btn-sm" href="">Editar</a>
                         </td>

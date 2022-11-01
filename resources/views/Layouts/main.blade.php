@@ -59,24 +59,6 @@
             </li>
           </ul>
 
-          <!--<div class="dropdown">
-  @if(Auth()->Check())
-  <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  {{Auth()->user()->name}}
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <hr>
-    <li>
-    <form method="POST" action="{{ route('logout') }}">
-      @csrf
-    <button type="submit" class="dropdown-item">Logout</button>
-    </form>
-    </li>
-  </ul>
-  @endif
-</div>-->
           @if(Auth()->Check())
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle border-white" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -116,7 +98,10 @@
 
   @yield('posts')
 
+  <div class="container ps-3">
   @yield('borrar')
+  </div>
+  
 
 
   <!--Footer-->

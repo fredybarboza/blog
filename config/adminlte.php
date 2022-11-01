@@ -336,11 +336,6 @@ return [
             'route'        => 'admin.posts.index',
         ],
         [
-            'text'       => 'Writing',
-            'icon' => 'fas fa-fw fa-pen-nib',
-            'route'        => 'writing',
-        ],
-        [
             'text'       => 'New Post',
             'icon' => 'fas fa-fw fa-plus',
             'route'        => 'admin.posts.create',
