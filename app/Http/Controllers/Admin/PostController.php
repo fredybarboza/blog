@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -46,12 +47,21 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-   
+
         $user = User::FindOrFail($request->user_id);
         
         $this->authorize('post', $user);
         
         $post = Post::create($request->all());
+
+        if($request->file('file')){
+
+            $url = Storage::disk('public')->put('Posts', $request->file('file'));
+
+            $post->image()->create([
+                'url' => $url
+            ]);
+        }
 
         if($request->tags){
             $post->tags()->attach($request->tags);

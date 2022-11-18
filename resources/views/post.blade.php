@@ -20,12 +20,15 @@
 @foreach($post->tags as $tag)
 <a class="nav-link badge bg-secondary" href="{{ route('tag', $tag) }}">{{ $tag->name }}</a>
 @endforeach
-
+<hr>
 
 <div class="container mt-3 mb-3">
 <img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" alt="...">
 </div>
 <p>{!! $post->body !!}</p>
+<hr>
+<i>Posted by {{$post->user->name}} on {{date("d F Y", strtotime($post->created_at))}}</i>
+<hr class="border border-primary border-3 opacity-75">
 </div>
 
 
@@ -33,11 +36,11 @@
 <!-- RELATED POST -->
 <div class="container">
 <section class="text-center">
-        <h4 class="mb-5"><strong>Latest posts</strong></h4>
+        <h4 class="mb-5"><strong>Latest posts about {{ $post->category->name }}</strong></h4>
 
         <!--POSTS-->
         <div class="row">
-          
+          @foreach($related as $r)
           <div class="col-lg-4 col-md-12 mb-4">
             
             <div class="card">
@@ -45,25 +48,25 @@
                 <a href=""><img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" /></a>
                 
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
-                  
-                  <a class="nav-link badge bg-secondary" href="">g5g5</a>
-                 
+                  @foreach($r->tags as $tag)
+                  <a class="nav-link badge bg-secondary" href="">{{ $tag->name }}</a>
+                 @endforeach
                 </div>
                 
               </div>
               <div class="card-body">
-                <a class="nav-link" href=""><h5 class="card-title">tgt</h5></a>
+                <a class="nav-link" href=""><h5 class="card-title">{{ $r->name }}</h5></a>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk of the
                   card's content.
                 </p>
-                <p class="card-text"><small class="text-muted">by gtgt</small></p>
+                <p class="card-text"><small class="text-muted">by gtgt | {{date("d F Y", strtotime($post->created_at))}}</small></p>
               </div>
               
             </div>
             
           </div>  
-
+@endforeach
         </div>
 
       </section>

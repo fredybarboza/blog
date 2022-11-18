@@ -28,15 +28,15 @@
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->name }}</td>
-                        <td>@if($post->status == 1) Borrador @else Publicado @endif</td>
+                        <td>@if($post->status == 1) <div class="badge bg-danger">Borrador</div> @else <div class="badge bg-primary">Publicado</div> @endif</td>
                         <td style="width: 1rem;">
-                            <a class="btn btn-primary btn-sm" href="">Editar</a>
+                            <a class="btn btn-info btn-sm" href=""><i class="fas fa-fw fa-pen"></i></a>
                         </td>
                         <td style="width: 1rem;">
                             <form method="POST" action="">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>

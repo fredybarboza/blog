@@ -17,18 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-    $posts = Post::where('status', 2)->paginate(6);
-    return view('home', compact('posts'));
-})->name('/');
+Route::get('/', [HomeController::class, 'index'])->name('/');
 
 Route::get('tag/{tag}', [HomeController::class, 'tag'])->name('tag');
 
 Route::get('category/{category}', [HomeController::class, 'category'])->name('category');
 
-Route::get('post/{post}', function(Post $post){
-    return view('post', compact('post'));
-})->name('post');
+Route::get('post/{post}', [HomeController::class, 'post'])->name('post');
 
 

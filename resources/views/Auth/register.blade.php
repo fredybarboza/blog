@@ -17,7 +17,7 @@
 
 <div class="container text-center">
   <a href="{{ route('/') }}" class="nav-link">
-  <h3>BLOG.com</h3>
+  <h3>MyBlog</h3>
   </a>
 
 </div>
@@ -32,23 +32,35 @@
 @csrf
 <div class="mb-3">
   <label for="" class="form-label">Name</label>
-  <input type="text" name="name" class="form-control" id="">
+  <input type="text" name="name" class="form-control" id="" value="{{ old('name') }}">
+  @error('name')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
 </div>
 
 <div class="mb-3">
   <label for="" class="form-label">Email address</label>
-  <input type="email" name="email" class="form-control" id="" aria-describedby="emailHelp">
+  <input type="email" name="email" class="form-control" id="" aria-describedby="emailHelp" value="{{ old('email') }}">
+  @error('email')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
 </div>
 
 <div class="mb-3">
   <label for="" class="form-label">Password</label>
   <input type="password" name="password" class="form-control" id="">
+  @error('password')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
 </div>
 
 <div class="mb-3">
   <label for="" class="form-label">Confirm Password</label>
   <input type="password" name="password_confirmation" class="form-control" id="">
+  @error('password_confirmation')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
 </div>
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">

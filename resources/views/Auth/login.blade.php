@@ -16,7 +16,7 @@
 
 <div class="container text-center">
   <a class="nav-link" href="{{ route('/') }}">
-<h3>BLOG.com</h3>
+<h3>MyBlog</h3>
 </a>
 </div>
 <hr>
@@ -30,6 +30,9 @@
   <div class="mb-3">
     <label for="" class="form-label">Email address</label>
     <input type="email" name="email" class="form-control" id="">
+    @error('email')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
     <div id="" class="form-text">We'll never share your email with anyone else.</div>
   </div>
 

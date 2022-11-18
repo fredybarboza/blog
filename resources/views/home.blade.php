@@ -1,5 +1,18 @@
 @extends('Layouts.main')
 
+@section('categories')
+<li class="nav-item dropdown d-flex">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+              </a>
+              <ul class="dropdown-menu">
+                @foreach($categories as $category)
+                <li><a class="dropdown-item" href="{{ route('category', $category) }}">{{ $category->name }}</a></li>
+                 @endforeach
+              </ul>
+            </li>
+@endsection
+
 @section('jumbotron')
 <div id="intro" class="p-5 text-center bg-light">
       <h1 class="mb-3 h2">Learn Bootstrap 5 with MDB</h1>
@@ -26,8 +39,8 @@
             
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <a href=""><img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" /></a>
-                
+                <a href="{{ route('post', $post) }}"><img @if($post->image) src="{{ Storage::url($post->image->url) }}" @endif class="img-fluid" /></a>
+              
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
                   @foreach($post->tags as $tag)
                   <a class="nav-link badge bg-secondary" href="{{ route('tag', $tag) }}">{{ $tag->name }}</a>
@@ -37,11 +50,10 @@
               </div>
               <div class="card-body">
                 <a class="nav-link" href="{{ route('post', $post) }}"><h5 class="card-title">{{ $post->name }}</h5></a>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
+                <p class="card-text mb-0">
+                  {!! $post->extract !!}
                 </p>
-                <p class="card-text"><small class="text-muted">by {{ $post->user->name }}</small></p>
+                <p class="card-text"><small class="text-muted">by {{ $post->user->name }} | {{date("d F Y", strtotime($post->created_at))}}</small></p>
               </div>
               
             </div>

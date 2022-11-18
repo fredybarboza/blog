@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::view('admin', 'Admin.dashboard');
+Route::get('admin', [PostController::class, 'index'])->name('admin');
 
 
 Route::resource('categories', CategoryController::class)->names('admin.categories');
