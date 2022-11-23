@@ -58,19 +58,25 @@
         <small class="text-danger">{{ $message }}</small>
         @enderror
       </div>
-
+<div class="mb-3">
+  <label for="" class="form-label">Select an image for the post</label>
       <div class="row mb-3">
+        
         <div class="col">
           <div class="image-wrapper">
-            <img  id="picture" src="https://cdn.pixabay.com/photo/2022/10/24/18/10/street-7544046_960_720.jpg" alt="">
+            <img  id="picture" src="https://pixabay.com/get/gae1d00a524631357a312148564c118a79832693cb6c95135dadc158d3b4a3ed84f7a7a0e12d85f8a8e7db025c6f9ef2ade75999705ffd697290a556b4a84025e0ae9234fb92aa80deea9c884b87e46f7_640.jpg" alt="">
           </div>
         </div>
 
         <div class="col">
           <div class="form-group">
-            <input id="file" type="file" name="file">
+            <input id="file" type="file" name="file" accept="image/*">
           </div>
         </div>
+      </div>
+      @error('file')
+            <small class="text-danger">{{$message}}</small>
+        @enderror
       </div>
 
       <div class="form-floating mb-3">

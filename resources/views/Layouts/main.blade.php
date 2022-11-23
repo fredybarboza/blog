@@ -81,6 +81,11 @@
   </header>
   <!--Main Navigation-->
 
+
+  
+  @yield('debug')
+        
+  
   @yield('posts')
 
   <div class="container ps-3">

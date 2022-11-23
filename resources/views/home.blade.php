@@ -24,6 +24,11 @@
 </div>
 @endsection
 
+@section('debug')
+
+
+@endsection
+
 @section('posts')
 <!--Main layout-->
 <main class="my-5">
@@ -39,7 +44,7 @@
             
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <a href="{{ route('post', $post) }}"><img @if($post->image) src="{{ Storage::url($post->image->url) }}" @endif class="img-fluid" /></a>
+                <a href="{{ route('post', $post) }}"><img @if($post->image) src="{{ Storage::url($post->image->url) }}" @else src="https://pixabay.com/get/g6c7fb3e052066ef3451b7259fc90e159d820e120f345cc57d139a61daf8e87a0933822bd1ece91c354351365207e25fe051a21a0a42c0df939bbc0b467b1142b3cfe5589909b658f739475edd2494e5c_640.jpg" @endif class="img-fluid" /></a>
               
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
                   @foreach($post->tags as $tag)
@@ -65,6 +70,7 @@
           
 
         </div>
+        <!--END POST -->
 
       </section>
       <!--Section: Content-->

@@ -10,6 +10,7 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -20,6 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        
         $posts = Post::where('user_id', Auth()->user()->id)->orderBy('id', 'desc')->get();
 
         return view('Admin.posts.index', compact('posts'));
@@ -56,10 +58,15 @@ class PostController extends Controller
 
         if($request->file('file')){
 
-            $url = Storage::disk('public')->put('Posts', $request->file('file'));
+            $nombre = $request->file('file')->getClientOriginalName();
+
+            $ruta = storage_path() . '\app\public\Posts/' . $nombre;
+
+            Image::make($request->file('file'))->resize(640, 480)->save($ruta);
+            
 
             $post->image()->create([
-                'url' => $url
+                'url' => '/Posts/' . $nombre
             ]);
         }
 
@@ -68,6 +75,7 @@ class PostController extends Controller
         }
 
         return redirect()->route('admin.posts.index');
+    
     }
 
     /**

@@ -301,7 +301,25 @@ return [
             'topnav_right' => true,
         ],
 
+       
+
         // Sidebar items:
+        [
+            'text'       => 'Home',
+            'icon' => false,
+            'route'        => 'admin',
+        ],
+        ['header' => 'BLOG OPTIONS'],
+        [
+            'text'       => 'My Posts',
+            'icon' => 'fas fa-fw fa-list',
+            'route'        => 'admin.posts.index',
+        ],
+        [
+            'text'       => 'New Post',
+            'icon' => 'fas fa-fw fa-plus',
+            'route'        => 'admin.posts.create',
+        ],
         ['header' => 'ADMINISTRATOR'],
         [
             'text' => 'Categories',
@@ -313,12 +331,7 @@ return [
             'route'  => 'admin.tags.index',
             'icon' => 'fas fa-fw fa-tags',
         ],
-        ['header' => 'BLOG OPTIONS'],
-        [
-            'text'       => 'New Post',
-            'icon' => 'fas fa-fw fa-plus',
-            'route'        => 'admin.posts.create',
-        ],
+        
         
     ],
 
