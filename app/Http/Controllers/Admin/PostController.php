@@ -34,7 +34,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::pluck('name', 'id');
 
         $tags = Tag::all();
 
@@ -95,9 +95,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $categories = Category::pluck('name', 'id');
+
+        $tags = Tag::all();
+
+        return view('Admin.posts.edit', compact('categories', 'tags', 'post'));
     }
 
     /**
@@ -107,9 +111,39 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        if($request->tags){
+            $post->tags()->sync($request->tags);
+        }
+
+        if($request->file('file')){
+
+            $nombre = $request->file('file')->getClientOriginalName();
+
+            $ruta = storage_path() . '\app\public\Posts/' . $nombre;
+
+            Image::make($request->file('file'))->resize(640, 480)->save($ruta);
+
+            if($post->image){
+                Storage::disk('public')->delete($post->image->url);
+
+                $post->image()->update([
+                    'url' => '/Posts/' . $nombre
+                ]);
+
+            }
+            else{
+                $post->image()->create([
+                    'url' => '/Posts/' . $nombre
+                ]); 
+            }
+            
+        }
+        
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -118,8 +152,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
 }

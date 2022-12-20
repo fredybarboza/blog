@@ -89,7 +89,7 @@
   @yield('posts')
 
   <div class="container ps-3">
-  @yield('borrar')
+  @yield('related')
   </div>
   
 

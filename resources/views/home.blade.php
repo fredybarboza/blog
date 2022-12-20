@@ -24,11 +24,6 @@
 </div>
 @endsection
 
-@section('debug')
-
-
-@endsection
-
 @section('posts')
 <!--Main layout-->
 <main class="my-5">
@@ -37,40 +32,7 @@
       <section class="text-center">
         <h4 class="mb-5"><strong>Latest posts</strong></h4>
 
-        <!--POSTS-->
-        <div class="row">
-          @foreach($posts as $post)
-          <div class="col-lg-4 col-md-12 mb-4">
-            
-            <div class="card">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <a href="{{ route('post', $post) }}"><img @if($post->image) src="{{ Storage::url($post->image->url) }}" @else src="https://pixabay.com/get/g6c7fb3e052066ef3451b7259fc90e159d820e120f345cc57d139a61daf8e87a0933822bd1ece91c354351365207e25fe051a21a0a42c0df939bbc0b467b1142b3cfe5589909b658f739475edd2494e5c_640.jpg" @endif class="img-fluid" /></a>
-              
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
-                  @foreach($post->tags as $tag)
-                  <a class="nav-link badge bg-secondary" href="{{ route('tag', $tag) }}">{{ $tag->name }}</a>
-                  @endforeach
-                </div>
-                
-              </div>
-              <div class="card-body">
-                <a class="nav-link" href="{{ route('post', $post) }}"><h5 class="card-title">{{ $post->name }}</h5></a>
-                <p class="card-text mb-0">
-                  {!! $post->extract !!}
-                </p>
-                <p class="card-text"><small class="text-muted">by {{ $post->user->name }} | {{date("d F Y", strtotime($post->created_at))}}</small></p>
-              </div>
-              
-            </div>
-            
-          </div>
-          
-
-          @endforeach
-          
-
-        </div>
-        <!--END POST -->
+        @include('Posts.posts')
 
       </section>
       <!--Section: Content-->

@@ -23,6 +23,6 @@ Route::get('tag/{tag}', [HomeController::class, 'tag'])->name('tag');
 
 Route::get('category/{category}', [HomeController::class, 'category'])->name('category');
 
-Route::get('post/{post}', [HomeController::class, 'post'])->name('post');
+Route::get('post/{post}', [HomeController::class, 'showPost'])->name('show-post');
 
 

@@ -23,9 +23,11 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+        $post = $this->route()->parameter('post');
+
         $rules = [
             'name' => 'required',
-            'slug' => 'required|unique:posts',
+            'slug' => 'required|unique:posts,slug,' . $post->id,
             'status' => 'required|in:1,2',
             'file' => 'image'
         ];
