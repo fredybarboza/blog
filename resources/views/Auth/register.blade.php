@@ -16,9 +16,8 @@
 <div class="container p-4 border">
 
 <div class="container text-center">
-  <a href="{{ route('/') }}" class="nav-link">
-  <h3>MyBlog</h3>
-  </a>
+  <a class="navbar-brand" href="/" style="font-family: Yu Gothic UI Light"><b>Digital <span class="text-warning">Nugget</span></b></a>
+
 
 </div>
 
@@ -64,7 +63,7 @@
 </div>
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-<button type="submit" class="btn btn-primary right">Submit</button>
+<button type="submit" class="btn btn-dark right">Submit</button>
 </div>
 
 </form>

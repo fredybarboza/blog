@@ -28,43 +28,31 @@
     </style>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
 
 
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">MyBlog</a>
+        
+        <a class="navbar-brand text-light fs-3" href="/" style="font-family: Yu Gothic UI Light"><img src="/img/pepita.webp" class="me-1" style="height: 2rem" alt=""><b>Digital <span class="text-warning">Nugget</span></b></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active text-light" style="font-family: Yu Gothic UI Light" aria-current="page" href="/"><b>Inicio</b></a>
             </li>
             @yield('categories')
             
           </ul>
 
-          @if(Auth()->Check())
-          <div class="btn-group">
-            <button type="button" class="btn dropdown-toggle border-white" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-              {{Auth()->user()->name}}
-            </button>
-            <ul class="dropdown-menu dropdown-menu-lg-end">
-              <li><a class="dropdown-item" href="{{ route('admin') }}">Dashboard</a></li>
-              <hr>
-              <li>
-                <form method="POST" action="{{ route('logout') }}">
-                  @csrf
-                  <button type="submit" class="dropdown-item">Sign out</button>
-                </form>
-              </li>
-            </ul>
+          
+          
+          <div class="input-group" style="width: 15rem">
+            <input type="search" class="form-control rounded-start-2" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-warning">search</button>
           </div>
-          @else
-          <a class="nav-link me-3" href="{{ route('login') }}">Sign in</a>
-          <a class="nav-link" href="{{ route('register') }}">Sign up</a>
-          @endif
+          
 
 
           <!--xxxxxxx-->
@@ -95,23 +83,23 @@
 
 
   <!--Footer-->
-  <footer class="bg-light text-lg-start">
+  <footer class="bg-dark text-lg-start text-light">
 
-    @yield('social')
+    
     <hr class="m-0" />
 
-    <div class="text-center py-4 align-items-center">
-      <p>Follow MDB on social media</p>
-      <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow" target="_blank">
+    <div class="text-center py-4 align-items-center text-light">
+      <p>Follow Digital Nugget on social media</p>
+      <a href="" class="btn btn-dark m-1" role="button" rel="nofollow" target="_blank">
       <i class="bi bi-instagram"></i>
       </a>
-      <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow" target="_blank">
+      <a href="" class="btn btn-dark m-1" role="button" rel="nofollow" target="_blank">
         <i class="bi bi-facebook"></i>
       </a>
-      <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow" target="_blank">
+      <a href="" class="btn btn-dark m-1" role="button" rel="nofollow" target="_blank">
         <i class="bi bi-twitter"></i>
       </a>
-      <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow" target="_blank">
+      <a href="" class="btn btn-dark m-1" role="button" rel="nofollow" target="_blank">
         <i class="bi bi-github"></i>
       </a>
     </div>
@@ -120,8 +108,9 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      © 2023 Copyright
+      <a class="navbar-brand" href="/" style="font-family: Yu Gothic UI Light"><b>Digital <span class="text-warning">Nugget</span></b></a>
+
     </div>
     <!-- Copyright -->
   </footer>

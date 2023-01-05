@@ -7,7 +7,13 @@
 @stop
 
 @section('content')
-<button type="button" class="btn btn-primary">Primary</button>
+<div class="card">
+    <div class="card-body">
+    
+      <p class="card-text">Welcome to myblog admin panel</p>
+      
+    </div>
+  </div>
 @stop
 
 @section('css')

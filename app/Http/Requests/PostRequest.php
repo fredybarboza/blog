@@ -27,16 +27,19 @@ class PostRequest extends FormRequest
 
         $rules = [
             'name' => 'required',
-            'slug' => 'required|unique:posts,slug,' . $post->id,
+            'slug' => 'required|unique:posts',
             'status' => 'required|in:1,2',
             'file' => 'image'
         ];
+
+        if($post){
+            $rules['slug'] = 'required|unique:posts,slug,' . $post->id;
+        }
 
         if($this->status==2){
             $rules = array_merge($rules, [
                 'category_id' => 'required',
                 'tags' => 'required',
-                'extract' => 'required',
                 'body' => 'required'
             ]);
         }

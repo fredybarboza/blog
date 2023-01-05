@@ -14,10 +14,8 @@
 
 <div class="container border p-4">
 
-<div class="container text-center">
-  <a class="nav-link" href="{{ route('/') }}">
-<h3>MyBlog</h3>
-</a>
+<div class="container text-center"> 
+    <a class="navbar-brand" href="/" style="font-family: Yu Gothic UI Light"><b>Digital <span class="text-warning">Nugget</span></b></a>
 </div>
 <hr>
 <div class="container text-center">
@@ -46,7 +44,7 @@
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-dark">Submit</button>
   </div>
 </form>
 </div>
