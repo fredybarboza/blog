@@ -47,11 +47,14 @@
           </ul>
 
           
-          
+          <form action="{{ route('search') }}" method="GET">
+            @csrf
           <div class="input-group" style="width: 15rem">
-            <input type="search" class="form-control rounded-start-2" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-warning">search</button>
+            <input type="text" name="search" class="form-control rounded-start-2" placeholder="Search" aria-label="Search" aria-describedby="search-addon" required/>
+            <button type="submit" class="btn btn-outline-warning">search</button>
+          
           </div>
+        </form>
           
 
 

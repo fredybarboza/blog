@@ -25,6 +25,5 @@ Route::get('category/{category}', [HomeController::class, 'category'])->name('ca
 
 Route::get('post/{post}', [HomeController::class, 'showPost'])->name('show-post');
 
-
-Route::post('prueba', [HomeController::class, 'imageUpload'])->name('prueba');
+Route::get('search', [HomeController::class, 'search'])->name('search');
 

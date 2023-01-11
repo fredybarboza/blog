@@ -52,7 +52,10 @@ class HomeController extends Controller
         return view('Posts.filter', compact('name', 'posts'));
     }
 
-    public function imageUpload(Request $request){
-    
+    public function search(Request $request)
+    {
+        $posts = Post::where('name', 'LIKE', '%' . $request->search . '%')->paginate(6);
+
+        return view('Posts.search', compact('posts'));
     }
 }
