@@ -32,14 +32,12 @@ class TagRequest extends FormRequest
             return [
                 'name' => 'required',
                 'slug' => ['required', Rule::unique('tags')->ignore($tag->id)],
-                'color' => 'required'
             ];
         }
 
         return [
             'name' => 'required',
             'slug' => 'required|unique:tags',
-            'color' => 'required'
         ];
     }
 }

@@ -20,6 +20,8 @@ class UserPolicy
     }
 
     public function post(User $authUser, User $user){
+
         return $authUser->id === $user->id;
+        
     }
 }

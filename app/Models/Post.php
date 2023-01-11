@@ -11,6 +11,10 @@ class Post extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    public function getRouteKeyName(){
+        return 'slug';
+    }
+
     //REALACION UNO A MUCHOS INVERSA
     public function User(){
         return $this->belongsTo(User::class);

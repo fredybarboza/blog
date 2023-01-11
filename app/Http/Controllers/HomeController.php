@@ -7,6 +7,8 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class HomeController extends Controller
 {
@@ -48,5 +50,9 @@ class HomeController extends Controller
         $name = $category->name;
 
         return view('Posts.filter', compact('name', 'posts'));
+    }
+
+    public function imageUpload(Request $request){
+    
     }
 }

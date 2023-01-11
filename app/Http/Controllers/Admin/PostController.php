@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
+
 class PostController extends Controller
 {
     /**
@@ -48,7 +49,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(PostRequest $request)
-    {
+    {   
 
         $user = User::FindOrFail($request->user_id);
         
@@ -96,7 +97,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    {
+    { 
+        $this->authorize('edit', $post);
+
         $categories = Category::pluck('name', 'id');
 
         $tags = Tag::all();
@@ -113,11 +116,15 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
+        if(isset($request->user_id)){
+            return false;
+        }
+
         $post->update($request->all());
 
-        if($request->tags){
+        
             $post->tags()->sync($request->tags);
-        }
+        
 
         if($request->file('file')){
 
@@ -154,6 +161,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('destroy', $post);
         $post->delete();
         return redirect()->route('admin.posts.index');
     }

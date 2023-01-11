@@ -23,20 +23,6 @@
         <input type="text" name="slug" class="form-control" id="slug" value="{{ $tag->slug }}" readonly>
       </div>
 
-
-      <div class="mb-3">
-        <label for="form-label">Color</label>
-        <select class="form-select form-control" name="color">
-          <option value="Blue" @if($tag->color=='Blue') selected @endif>Blue</option>
-          <option value="Pink" @if($tag->color=='Pink') selected @endif>Pink</option>
-          <option value="Yellow" @if($tag->color=='Yellow') selected @endif>Yellow</option>
-          <option value="Green" @if($tag->color=='Green') selected @endif>Green</option>
-          <option value="Red" @if($tag->color=='Red') selected @endif>Red</option>
-        </select>
-      </div>
-
-
-
       <button type="submit" class="btn btn-primary">Save</button>
     </form>
   </div>

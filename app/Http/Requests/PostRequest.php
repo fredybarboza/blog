@@ -39,7 +39,6 @@ class PostRequest extends FormRequest
         if($this->status==2){
             $rules = array_merge($rules, [
                 'category_id' => 'required',
-                'tags' => 'required',
                 'body' => 'required'
             ]);
         }

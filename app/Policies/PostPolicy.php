@@ -20,11 +20,14 @@ class PostPolicy
         //
     }
 
-    public function store(User $user, Post $post){
-        
-        $a = $user->id;
-        $b = $post->user_id; 
-        dd($a);
-        return $a === $b;
+    public function edit(User $user, Post $post)
+    {   
+        return $user->id == $post->user_id;
     }
+
+    public function destroy(User $user, Post $post)
+    {
+        return $user->id == $post->user_id;
+    }
+
 }
