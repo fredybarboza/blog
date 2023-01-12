@@ -21,8 +21,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {    
         $posts = Post::where('user_id', Auth()->user()->id)->orderBy('id', 'desc')->get();
 
         return view('Admin.posts.index', compact('posts'));
@@ -50,7 +49,6 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {   
-
         $user = User::FindOrFail($request->user_id);
         
         $this->authorize('post', $user);
@@ -65,7 +63,6 @@ class PostController extends Controller
 
             Image::make($request->file('file'))->resize(640, 480)->save($ruta);
             
-
             $post->image()->create([
                 'url' => '/Posts/' . $nombre
             ]);
@@ -116,15 +113,14 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        if(isset($request->user_id)){
+        if(isset($request->user_id))
+        {
             return false;
         }
 
         $post->update($request->all());
-
         
-            $post->tags()->sync($request->tags);
-        
+        $post->tags()->sync($request->tags);
 
         if($request->file('file')){
 

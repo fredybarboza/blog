@@ -4,34 +4,31 @@
 
 
 @section('content_header')
-
-
-<h1>Create New Post</h1>
-
+    <h1>Create New Post</h1>
 @stop
 
 @section('content')
 
-<div class="card">
-  <div class="card-body">
-    {!! Form::open(['route' => 'admin.posts.store', 'method' => 'POST', 'autocomplete' => 'off', 'files' => 'true']) !!}
-      
-    {!! Form::hidden('user_id', auth()->user()->id) !!}
+    <div class="card">
+        <div class="card-body">
+            {!! Form::open(['route' => 'admin.posts.store', 'method' => 'POST', 'autocomplete' => 'off', 'files' => 'true']) !!}
 
-      @include('Admin.posts.form.fields')
+            {!! Form::hidden('user_id', auth()->user()->id) !!}
 
-      {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-      
-    {!! Form::close() !!}
-  </div>
-</div>
+            @include('Admin.posts.form.fields')
+
+            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+        </div>
+    </div>
 
 @stop
 
 @section('css')
-@include('Admin.posts.form.style')
+    @include('Admin.posts.form.style')
 @stop
 
 @section('js')
-  @include('Admin.posts.form.script')
+    @include('Admin.posts.form.script')
 @stop

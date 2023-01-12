@@ -7,13 +7,11 @@
 @stop
 
 @section('content')
-<div class="card">
-    <div class="card-body">
-    
-      <p class="card-text">Welcome to myblog admin panel</p>
-      
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">Welcome to myblog admin panel</p>
+        </div>
     </div>
-  </div>
 @stop
 
 @section('css')
@@ -21,5 +19,7 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
 @stop
