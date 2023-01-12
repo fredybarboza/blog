@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Digital <span style="color: #FF9333;">Nugget</span></b>',
-    'logo_img' => 'vendor/adminlte/dist/img/pepita.webp',
+    'logo' => 'Blog',
+    'logo_img' => 'vendor/adminlte/dist/img/b.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',

@@ -11,7 +11,7 @@
 
 @section('jumbotron')
     <div id="intro" class="p-5 text-center" style="background: #171717">
-        <h3 class="text-light" style="font-family: Yu Gothic UI Light">Blog De Tecnologia, Innovación, y Tendencias</h3>
+        <h3 class="text-light" style="font-family: Yu Gothic UI Light">Blog Description</h3>
     </div>
 @endsection
 

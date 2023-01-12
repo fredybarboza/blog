@@ -12,13 +12,12 @@
 <body class="bg-light">
     <div class="d-flex justify-content-center mt-5">
 
-        <div class="d-flex justify-content-center mt-5">
+        <div class="d-flex justify-content-center mt-5 shadow-lg" style="width: 20rem">
 
             <div class="container border p-4">
 
                 <div class="container text-center">
-                    <a class="navbar-brand" href="/" style="font-family: Yu Gothic UI Light"><b>Digital <span
-                                class="text-warning">Nugget</span></b></a>
+                    <a href="/" class="navbar-brand text-dark fs-3">Blog</a>
                 </div>
                 <hr>
                 <div class="container text-center">

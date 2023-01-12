@@ -32,10 +32,8 @@
 
 
             <div class="container-fluid">
+            <a href="/" class="navbar-brand text-light fs-3">Blog</a>
 
-                <a class="navbar-brand text-light fs-3" href="/" style="font-family: Yu Gothic UI Light"><img
-                        src="/img/pepita.webp" class="me-1" style="height: 2rem" alt=""><b>Digital <span
-                            class="text-warning">Nugget</span></b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +81,7 @@
         <hr class="m-0" />
 
         <div class="text-center py-4 align-items-center text-light">
-            <p>Follow Digital Nugget on social media</p>
+            <p>Follow the blog on social media</p>
             <a href="" class="btn btn-dark m-1" role="button" rel="nofollow" target="_blank">
                 <i class="bi bi-instagram"></i>
             </a>
@@ -101,8 +99,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2023 Copyright
-            <a class="navbar-brand" href="/" style="font-family: Yu Gothic UI Light"><b>Digital <span
-                        class="text-warning">Nugget</span></b></a>
+            <a href="/" class="navbar-brand text-light fs-3">Blog</a>
 
         </div>
         <!-- Copyright -->

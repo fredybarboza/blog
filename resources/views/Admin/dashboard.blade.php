@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <p class="card-text">Welcome to myblog admin panel</p>
+            <p class="card-text">Welcome to Blog admin panel</p>
         </div>
     </div>
 @stop
