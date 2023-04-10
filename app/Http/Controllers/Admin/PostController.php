@@ -21,8 +21,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    
-        $posts = Post::where('user_id', Auth()->user()->id)->orderBy('id', 'desc')->get();
+    {
+        $posts = Post::where('user_id', Auth()->user()->id)->orderBy('id', 'desc')->paginate(10);
 
         return view('Admin.posts.index', compact('posts'));
     }
@@ -48,32 +48,31 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(PostRequest $request)
-    {   
+    {
         $user = User::FindOrFail($request->user_id);
-        
+
         $this->authorize('post', $user);
-        
+
         $post = Post::create($request->all());
 
-        if($request->file('file')){
+        if ($request->file('file')) {
 
             $nombre = $request->file('file')->getClientOriginalName();
 
             $ruta = storage_path() . '\app\public\Posts/' . $nombre;
 
             Image::make($request->file('file'))->resize(640, 480)->save($ruta);
-            
+
             $post->image()->create([
                 'url' => '/Posts/' . $nombre
             ]);
         }
 
-        if($request->tags){
+        if ($request->tags) {
             $post->tags()->attach($request->tags);
         }
 
-        return redirect()->route('admin.posts.index');
-    
+        return redirect()->route('admin.posts.index')->with('info', 'Post Guardado Con Exito');
     }
 
     /**
@@ -94,7 +93,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    { 
+    {
         $this->authorize('edit', $post);
 
         $categories = Category::pluck('name', 'id');
@@ -113,16 +112,15 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        if(isset($request->user_id))
-        {
+        if (isset($request->user_id)) {
             return false;
         }
 
         $post->update($request->all());
-        
+
         $post->tags()->sync($request->tags);
 
-        if($request->file('file')){
+        if ($request->file('file')) {
 
             $nombre = $request->file('file')->getClientOriginalName();
 
@@ -130,23 +128,20 @@ class PostController extends Controller
 
             Image::make($request->file('file'))->resize(640, 480)->save($ruta);
 
-            if($post->image){
+            if ($post->image) {
                 Storage::disk('public')->delete($post->image->url);
 
                 $post->image()->update([
                     'url' => '/Posts/' . $nombre
                 ]);
-
-            }
-            else{
+            } else {
                 $post->image()->create([
                     'url' => '/Posts/' . $nombre
-                ]); 
+                ]);
             }
-            
         }
-        
-        return redirect()->route('admin.posts.index');
+
+        return redirect()->route('admin.posts.index')->with('info', 'Post Actualizado');
     }
 
     /**
@@ -159,6 +154,6 @@ class PostController extends Controller
     {
         $this->authorize('destroy', $post);
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('info', 'Post Eliminado');
     }
 }

@@ -32,7 +32,7 @@
 
 
             <div class="container-fluid">
-            <a href="/" class="navbar-brand text-light fs-3">Blog</a>
+                <a href="/" class="navbar-brand text-light fs-3">Blog</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -50,12 +50,12 @@
                     </ul>
 
 
-                    <form action="{{ route('search') }}" method="GET">
+                    <form action="{{ route('search') }}" method="POST">
                         @csrf
                         <div class="input-group" style="width: 15rem">
-                            <input type="text" name="search" class="form-control rounded-start-2"
+                            <input type="search" name="search" class="form-control rounded-start-2"
                                 placeholder="Search" aria-label="Search" aria-describedby="search-addon" required />
-                            <button type="submit" class="btn btn-outline-warning">search</button>
+                            <button type="submit" class="btn btn-outline-primary"><i class="bi bi-search"></i></button>
 
                         </div>
                     </form>

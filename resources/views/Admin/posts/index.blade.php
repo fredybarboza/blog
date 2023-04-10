@@ -11,6 +11,13 @@
 @stop
 
 @section('content')
+@if(session('info'))
+<div>
+    <div class="alert alert-success">
+        <strong>{{ session('info') }}</strong>
+    </div>
+</div>
+@endif
 
     <div class="card">
         <div class="card-body">
@@ -50,6 +57,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="container mt-4">
+                {{ $posts->links() }}
+            </div>
         </div>
     </div>
 @stop

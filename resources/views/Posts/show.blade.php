@@ -34,6 +34,8 @@
 
                     @include('Posts.posts')
 
+                    <a href="{{ route('category', $post->category) }}" class="btn btn-outline-dark btn-sm mb-4">See more..</a>
+
                 </section>
             </div>
         @endif

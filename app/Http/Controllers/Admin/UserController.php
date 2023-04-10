@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TagRequest;
-use App\Models\Category;
-use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
-class TagController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
-        return view('Admin.tags.index', compact('tags'));
+        $users = User::paginate(10);
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('Admin.tags.create');
+        //
     }
 
     /**
@@ -37,13 +37,10 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagRequest $request)
+    public function store(Request $request)
     {
-        Tag::create($request->all());
-
-        return redirect()->route('admin.tags.index')->with('info', 'Tag Guardado');
+        //
     }
-    
 
     /**
      * Display the specified resource.
@@ -62,9 +59,11 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit(User $user)
     {
-        return view('Admin.tags.edit', compact('tag'));
+        $roles = Role::all();
+
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -74,11 +73,11 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TagRequest $request, Tag $tag)
+    public function update(Request $request, User $user)
     {
-        $tag->update($request->all());
+        $user->roles()->sync($request->roles);
 
-        return redirect()->route('admin.tags.index')->with('info', 'Tag Actualizado');
+        return redirect()->route('admin.users.edit', $user)->with('info', 'Roles actualizados correctamente');
     }
 
     /**
@@ -87,9 +86,8 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy($id)
     {
-        $tag->delete();
-        return redirect()->route('admin.tags.index')->with('info', 'Tag Eliminado');
+        //
     }
 }

@@ -29,7 +29,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="" class="form-label">Email address</label>
-                        <input type="email" name="email" class="form-control" id="">
+                        <input type="email" name="email" class="form-control" id="" value="{{ old('email') }}">
                         @error('email')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

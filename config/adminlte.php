@@ -315,16 +315,27 @@ return [
             'icon' => 'fas fa-fw fa-plus',
             'route'        => 'admin.posts.create',
         ],
-        ['header' => 'ADMINISTRATOR'],
+        [
+            'header' => 'ADMINISTRATOR',
+            'can' => 'manage-blog'
+        ],
         [
             'text' => 'Categories',
             'route'  => 'admin.categories.index',
             'icon' => 'fas fa-fw fa-layer-group',
+            'can' => 'admin.categories'
         ],
         [
             'text' => 'Tags',
             'route'  => 'admin.tags.index',
             'icon' => 'fas fa-fw fa-tags',
+            'can' => 'admin.tags'
+        ],
+        [
+            'text' => 'Users',
+            'route'  => 'admin.users.index',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'admin.users'
         ],
         
         

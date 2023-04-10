@@ -15,6 +15,10 @@
                 <!--POSTS-->
                 @include('Posts.posts')
 
+                <div class="container mt-4">
+                    {{ $posts->links() }}
+                </div>
+
             </section>
             <!--Section: Content-->
 

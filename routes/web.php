@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +22,6 @@ Route::get('category/{category}', [HomeController::class, 'category'])->name('ca
 
 Route::get('post/{post}', [HomeController::class, 'showPost'])->name('show-post');
 
-Route::get('search', [HomeController::class, 'search'])->name('search');
+Route::post('search', [HomeController::class, 'search'])->name('search');
+Route::get('search_query={term}', [HomeController::class, 'results'])->name('results');
 

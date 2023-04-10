@@ -15,6 +15,9 @@
                 <!--POSTS-->
                 @if (count($posts) !== 0)
                     @include('Posts.posts')
+                    <div class="container mt-4">
+                        {{ $posts->links() }}
+                    </div>
                 @else
                     <div class="alert alert-dark" role="alert">
                         No se han encontrado resultados para tu búsqueda.
@@ -23,10 +26,6 @@
 
             </section>
             <!--Section: Content-->
-
-            <div class="container mt-4">
-                {{ $posts->links() }}
-            </div>
 
         </div>
     </main>

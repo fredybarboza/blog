@@ -6,15 +6,12 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 class HomeController extends Controller
 {
 
-    public function index(){
-
+    public function index()
+    {
         $categories = Category::all();
 
         $posts = Post::where('status', 2)->orderBy('id', 'desc')->paginate(6);
@@ -22,30 +19,32 @@ class HomeController extends Controller
         return view('home', compact('posts', 'categories'));
     }
 
-    public function showPost(Post $post){
+    public function showPost(Post $post)
+    {
 
         $posts = Post::where('status', 2)
-                       ->where('category_id', $post->category_id)
-                       ->where('id', '!=', $post->id)
-                       ->orderBy('id', 'desc')
-                       ->limit(3)
-                       ->get();
+            ->where('category_id', $post->category_id)
+            ->where('id', '!=', $post->id)
+            ->orderBy('id', 'desc')
+            ->limit(3)
+            ->get();
 
         return view('Posts.show', compact('post', 'posts'));
     }
 
-    public function tag(Tag $tag){
+    public function tag(Tag $tag)
+    {
 
-        $posts = $tag->posts()->where('status', 2)->get();
+        $posts = $tag->posts()->where('status', 2)->paginate(6);
 
         $name = $tag->name;
 
         return view('Posts.filter', compact('name', 'posts'));
     }
 
-    public function category(Category $category){
-
-        $posts = Post::where('category_id', $category->id)->where('status', 2)->get();
+    public function category(Category $category)
+    {
+        $posts = Post::where('category_id', $category->id)->where('status', 2)->paginate(6);
 
         $name = $category->name;
 
@@ -54,7 +53,12 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $posts = Post::where('name', 'LIKE', '%' . $request->search . '%')->paginate(6);
+        return redirect()->route('results', $request->search);
+    }
+
+    public function results($term)
+    {
+        $posts = Post::where('name', 'LIKE', '%' . $term . '%')->where('status', 2)->paginate(6);
 
         return view('Posts.search', compact('posts'));
     }

@@ -20,8 +20,7 @@ class TagFactory extends Factory
         $name = $this->faker->unique()->word(20);
         return [
             'name' => $name,
-            'slug' => Str::slug($name),
-            'color' => $this->faker->randomElement(['Red','Blue','Pink'])
+            'slug' => Str::slug($name)
         ];
     }
 }
